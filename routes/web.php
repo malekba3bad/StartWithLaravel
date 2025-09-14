@@ -4,6 +4,7 @@
 
 use App\Models\Flight;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FlightsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,4 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('flights', function () {
-    return Flight::all();
-});
+Route::get('flights',[FlightsController::class,'index']);
