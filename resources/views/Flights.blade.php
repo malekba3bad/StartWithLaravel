@@ -24,11 +24,27 @@ th {
   background-color: #04AA6D;
   color: white;
 }
+
+.button {
+    float: left;
+    background-color: #04AA6D;
+    border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 10px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
 
 <h1 style="text-align:center">Flights</h1>
+    <a href="{{route('create_flights')}}" class="button">add flight</a>
 
 <table dir="rtl" style="text-align: center">
   <tr >

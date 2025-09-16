@@ -25,4 +25,6 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('flights',[FlightsController::class,'index']);
+Route::get('flights',[FlightsController::class,'index']) ->name('flights');
+Route::get('create_flights',[FlightsController::class,'create'])->name('create_flights');
+Route::post('store_flight',[FlightsController::class,'store'])->name('store_flight');
