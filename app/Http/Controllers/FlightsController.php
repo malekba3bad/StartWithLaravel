@@ -18,12 +18,12 @@ class FlightsController extends Controller
         return view('create_flight');
     }
 
-    public function store(Request $request)
+    public function store(Request $name)
     {
        
 
         $dataToInsert = [
-            'name' => $request->name,
+            'name' => $name->name,
             'created_at' => date('Y-m-d H:i:s')
         ];
         Flight::create($dataToInsert);
