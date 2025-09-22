@@ -30,4 +30,11 @@ class FlightsController extends Controller
         return redirect()->route('flights');
 
     }
+    public function edit_flights($id)
+    {
+        $data=Flight::find($id);
+        
+        
+    }
 }
+
