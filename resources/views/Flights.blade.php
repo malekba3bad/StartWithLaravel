@@ -50,6 +50,7 @@ th {
   <tr >
     <th dir="rtl" style="text-align: center">name</th>
     <th dir="rtl" style="text-align: center">date</th>
+    <th dir="rtl" style="text-align: center">edit</th>
     
   </tr>
 

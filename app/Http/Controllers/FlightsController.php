@@ -33,7 +33,7 @@ class FlightsController extends Controller
     public function edit_flights($id)
     {
         $data=Flight::find($id);
-        
+        return $data;
         
     }
 }
