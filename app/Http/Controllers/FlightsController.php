@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Flight;
+use App\Http\Requests\CreateFlightRequest;
 
 class FlightsController extends Controller
 {
@@ -18,15 +19,16 @@ class FlightsController extends Controller
         return view('create_flight');
     }
 
-    public function store(Request $name)
+    public function store(CreateFlightRequest $name)
     {
+        // $validate = $name->validate([
+        //     'name' => 'required|min:3|max:50'
+        // ]);
 
 
-        $dataToInsert = [
-            'name' => $name->name,
-            'created_at' => date('Y-m-d H:i:s')
-        ];
-        Flight::create($dataToInsert);
+        $flight = new Flight();
+        $flight->name = $name->name;
+        $flight->save();
         return redirect()->route('flights');
     }
     public function edit($id, Request $request)
@@ -40,6 +42,13 @@ class FlightsController extends Controller
         $flight = Flight::find($id);
         $flight->name = $request->name;
         $flight->save();
+        return redirect()->route('flights');
+    }
+
+    public function delete($id)
+    {
+        $flight = Flight::find($id);
+        $flight->delete();
         return redirect()->route('flights');
     }
 }

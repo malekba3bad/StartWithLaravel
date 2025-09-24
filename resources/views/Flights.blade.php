@@ -50,7 +50,8 @@ th {
   <tr >
     <th dir="rtl" style="text-align: center">name</th>
     <th dir="rtl" style="text-align: center">date</th>
-    <th dir="rtl" style="text-align: center">edit</th>
+    <th dir="rtl" style="text-align: center"></th>
+    <th dir="rtl" style="text-align: center"></th>
     
   </tr>
 
@@ -59,7 +60,8 @@ th {
         <tr>
             <td>{{$info->name}}</td>
             <td>{{$info->created_at}}</td>
-            <td><a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; padding: 10px 5px; border-radius: 5px;">edit</a></td>
+            <td><a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; border-radius: 5px;">edit</a></td>
+            <td><a href="{{ route('delete_flights', $info->id) }}" class="button" style="background-color: #f44336; border-radius: 5px;">delete</a></td>
             
         </tr>
     @endforeach
