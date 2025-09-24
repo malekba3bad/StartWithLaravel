@@ -59,7 +59,7 @@ th {
         <tr>
             <td>{{$info->name}}</td>
             <td>{{$info->created_at}}</td>
-            <td><a {{route('edit_flights')}} class="button" style="background-color: #04AA6D; padding: 10px 5px; border-radius: 5px;">edit</a></td>
+            <td><a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; padding: 10px 5px; border-radius: 5px;">edit</a></td>
             
         </tr>
     @endforeach

@@ -9,8 +9,8 @@ class FlightsController extends Controller
 {
     public function index()
     {
-        $data=Flight::all();
-        return view('Flights',['data'=>$data]);
+        $data = Flight::all();
+        return view('Flights', ['data' => $data]);
     }
 
     public function create()
@@ -20,7 +20,7 @@ class FlightsController extends Controller
 
     public function store(Request $name)
     {
-       
+
 
         $dataToInsert = [
             'name' => $name->name,
@@ -28,13 +28,18 @@ class FlightsController extends Controller
         ];
         Flight::create($dataToInsert);
         return redirect()->route('flights');
-
     }
-    public function edit_flights($id)
+    public function edit($id, Request $request)
     {
-        $data=Flight::find($id);
-        return $data;
-        
+        $data = Flight::find($id);
+        return view('edit_flights', ['data' => $data]);
+    }
+
+    public function update_flights(Request $request, $id)
+    {
+        $flight = Flight::find($id);
+        $flight->name = $request->name;
+        $flight->save();
+        return redirect()->route('flights');
     }
 }
-
