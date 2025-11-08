@@ -10,7 +10,7 @@ class FlightsController extends Controller
 {
     public function index()
     {
-        $data = Flight::all();
+        $data = Flight::orderBy('id', 'DESC')->get();
         return view('Flights', ['data' => $data]);
     }
 

@@ -5,6 +5,7 @@
 use App\Models\Flight;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightsController;
+use App\Http\Controllers\CountriesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,3 +33,9 @@ Route::post('store_flight',[FlightsController::class,'store'])->name('store_flig
 Route::get('edit_flights/{id}',[FlightsController::class,'edit'])->name('edit_flights');
 Route::post('update_flights/{id}',[FlightsController::class,'update_flights'])->name('update_flights');
 Route::get('delete_flights/{id}',[FlightsController::class,'delete'])->name('delete_flights');
+
+Route::resource('country', CountriesController::class);
+
+route::fallback(function(){
+    return "this page not found 404";
+});
