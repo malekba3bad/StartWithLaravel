@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCountry;
+use App\Models\countries;
 use Illuminate\Http\Request;
 
 class CountriesController extends Controller
@@ -11,7 +13,8 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        //
+        $data= countries::all();
+        return view('countries', ['data' => $data]);
     }
 
     /**
@@ -19,15 +22,18 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_country');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCountry $request)
     {
-        //
+        $country = new countries();
+        $country->name = $request->name;
+        $country->save();
+        return redirect()->route('country.index');
     }
 
     /**
@@ -43,7 +49,8 @@ class CountriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = countries::find($id);
+        return view('edit_country', ['data' => $data]);
     }
 
     /**
@@ -51,7 +58,9 @@ class CountriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+       $DataToUpdate['name'] = $request->name;
+    countries::where('id', "=", $id)->update($DataToUpdate);
+    return redirect()->route('country.index');
     }
 
     /**
@@ -59,6 +68,7 @@ class CountriesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        countries::where('id', "=", $id)->delete();
+        return redirect()->route('country.index');
     }
 }
