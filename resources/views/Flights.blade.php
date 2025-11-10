@@ -60,9 +60,22 @@ th {
         <tr>
             <td>{{$info->name}}</td>
             <td>{{$info->created_at}}</td>
-            <td><a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; border-radius: 5px;">edit</a></td>
-            <td><a href="{{ route('delete_flights', $info->id) }}" class="button" style="background-color: #f44336; border-radius: 5px;">delete</a></td>
+            <td>
+            <a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; border-radius: 5px;">edit</a>
             
+            @if ($info->deleted_at!=null)
+            <a href="{{ route('delete_flights', $info->id) }}" class="button" style="background-color: #f44336; border-radius: 5px;">final delete </a>
+            @endif
+
+            @if ($info->deleted_at==null)
+            <a href="{{ route('delete_soft', $info->id) }}" class="button" style="background-color: #925800; border-radius: 5px;">delete</a>
+           @endif
+            
+           @if ($info->deleted_at!=null)
+            <a href="{{ route('restore', $info->id) }}" class="button" style="background-color: #810092; border-radius: 5px;">cancel delete</a>
+            @endif
+            </td>
+
         </tr>
     @endforeach
 

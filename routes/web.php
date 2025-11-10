@@ -33,6 +33,8 @@ Route::post('store_flight',[FlightsController::class,'store'])->name('store_flig
 Route::get('edit_flights/{id}',[FlightsController::class,'edit'])->name('edit_flights');
 Route::post('update_flights/{id}',[FlightsController::class,'update_flights'])->name('update_flights');
 Route::get('delete_flights/{id}',[FlightsController::class,'delete'])->name('delete_flights');
+Route::get('delete_soft/{id}',[FlightsController::class,'delete_soft'])->name('delete_soft');
+Route::get('restore/{id}',[FlightsController::class,'restore'])->name('restore');
 
 Route::resource('country', CountriesController::class);
 

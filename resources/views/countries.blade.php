@@ -67,7 +67,6 @@ th {
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="button" style="background-color: #f44336; border-radius: 5px;">delete</button>
-                {{-- <a href="{{ route('country.destroy', $info->id) }}" class="button" style="background-color: #f44336; border-radius: 5px;">delete</a> --}}
                 </form>
             
             </td>

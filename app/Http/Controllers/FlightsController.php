@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Flight;
 use App\Http\Requests\CreateFlightRequest;
 
+
 class FlightsController extends Controller
 {
     public function index()
     {
-        $data = Flight::orderBy('id', 'DESC')->get();
+        $data = Flight::withTrashed()->orderBy('id', 'DESC')->get();
         return view('Flights', ['data' => $data]);
     }
 
@@ -47,8 +48,20 @@ class FlightsController extends Controller
 
     public function delete($id)
     {
-        $flight = Flight::find($id);
-        $flight->delete();
+        Flight::where('id', '=', $id)->forcedelete();
         return redirect()->route('flights');
     }
+    
+    public function delete_soft($id)
+    {
+        Flight::where('id', '=', $id)->delete();
+        return redirect()->route('flights');
+    }
+
+    public function restore($id)
+    {
+        Flight::where('id', '=', $id)->restore();
+        return redirect()->route('flights');
+    }
+
 }
