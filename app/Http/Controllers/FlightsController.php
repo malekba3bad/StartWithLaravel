@@ -11,7 +11,7 @@ class FlightsController extends Controller
 {
     public function index()
     {
-        $data = Flight::withTrashed()->orderBy('id', 'DESC')->get();
+        $data = Flight::withTrashed()->whereIn('id', [5, 8, 3])->orderBy('id', 'DESC')->get();
         return view('Flights', ['data' => $data]);
     }
 
@@ -32,9 +32,9 @@ class FlightsController extends Controller
         $flight->save();
         return redirect()->route('flights');
     }
-    public function edit($id, Request $request)
+    public function edit($id)
     {
-        $data = Flight::find($id);
+        $data = Flight::findOrFail($id);
         return view('edit_flights', ['data' => $data]);
     }
 
