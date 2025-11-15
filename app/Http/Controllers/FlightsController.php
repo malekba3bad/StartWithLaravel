@@ -11,7 +11,19 @@ class FlightsController extends Controller
 {
     public function index()
     {
-        $data = Flight::withTrashed()->whereIn('id', [5, 8, 3])->orderBy('id', 'DESC')->get();
+        $data = Flight::withTrashed()->with('destinations')->with('booking')->orderBy('id', 'DESC')->get();
+        if (!empty($data)) {
+            foreach ($data as $info) {
+                $theBooking = $info->booking;
+                if(!empty($info->booking)){
+                    foreach($info->booking as $book){
+                        echo $book->traveler_name;
+                        
+                    }
+                }
+                
+            }
+        }
         return view('Flights', ['data' => $data]);
     }
 

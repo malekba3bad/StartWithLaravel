@@ -49,9 +49,11 @@ th {
 <table dir="rtl" style="text-align: center">
   <tr >
     <th dir="rtl" style="text-align: center">name</th>
+<th dir="rtl" style="text-align: center">Fixed destination</th>
     <th dir="rtl" style="text-align: center">date</th>
     <th dir="rtl" style="text-align: center"></th>
-    <th dir="rtl" style="text-align: center"></th>
+    
+    
     
   </tr>
 
@@ -59,6 +61,9 @@ th {
     @foreach($data as $info)
         <tr>
             <td>{{$info->name}}</td>
+<td>{{$info->destinations ? $info->destinations->destination : 'N/A'}}</td>
+
+
             <td>{{$info->created_at}}</td>
             <td>
             <a href="{{ route('edit_flights', $info->id) }}" class="button" style="background-color: #04AA6D; border-radius: 5px;">edit</a>
