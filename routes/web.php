@@ -6,10 +6,9 @@ use App\Models\Flight;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightsController;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
