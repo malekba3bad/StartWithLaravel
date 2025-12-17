@@ -37,9 +37,12 @@ Route::get('delete_soft/{id}',[FlightsController::class,'delete_soft'])->name('d
 Route::get('restore/{id}',[FlightsController::class,'restore'])->name('restore');
 
 //Setup Courses Routes
-Route::get('courses', [CoursesController::class, 'index'])->name('courses.index ');
+Route::get('courses', [CoursesController::class, 'index'])->name('courses.index');
 Route::get('create_courses', [CoursesController::class, 'create'])->name('courses.create');
 Route::post('store_courses', [CoursesController::class, 'store'])->name('courses.store');
+Route::get('edit_courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
+Route::post('update_courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
+Route::get('delete_courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 
 
 
