@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CoursesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -34,6 +35,14 @@ Route::post('update_flights/{id}',[FlightsController::class,'update_flights'])->
 Route::get('delete_flights/{id}',[FlightsController::class,'delete'])->name('delete_flights');
 Route::get('delete_soft/{id}',[FlightsController::class,'delete_soft'])->name('delete_soft');
 Route::get('restore/{id}',[FlightsController::class,'restore'])->name('restore');
+
+//Setup Courses Routes
+Route::get('courses', [CoursesController::class, 'index'])->name('courses.index ');
+Route::get('create_courses', [CoursesController::class, 'create'])->name('courses.create');
+Route::post('store_courses', [CoursesController::class, 'store'])->name('courses.store');
+
+
+
 
 Route::resource('country', CountriesController::class);
 
