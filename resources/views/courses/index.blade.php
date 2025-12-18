@@ -8,7 +8,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title" style="text-align: center; float: none">بيانات الكورسات</h3>
-
+<a href="{{ route('courses.create') }}" class="btn btn-sm btn-info">اضافة كورس</a>
     
               </div>
               <!-- /.card-header -->
