@@ -9,6 +9,13 @@
               <div class="card-header">
                 <h3 class="card-title" style="text-align: center; float: none">بيانات الكورسات</h3>
 <a href="{{ route('courses.create') }}" class="btn btn-sm btn-info">اضافة كورس</a>
+
+@if (Session::has('success'))
+    <div class="alert alert-success" style="color: green; font-size: 16px; font-weight: bold; text-align: center; margin-top: 10px">
+        {{ Session::get('success') }}
+    </div>
+  
+@endif
     
               </div>
               <!-- /.card-header -->

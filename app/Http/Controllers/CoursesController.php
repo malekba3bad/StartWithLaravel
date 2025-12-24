@@ -21,8 +21,14 @@ class CoursesController extends Controller
     }
 
     public function store(CreateCourseValidationRequest $request){
+        $counter= Courses::where('name', '=',$request->name)->count();
+        
+        if($counter>0){
+            return redirect()->back()->with('error','الكورس موجود بالفعل')->withInput();
+        }
+        
         $data= $request->all();
         Courses::create($data);
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('success','تم الإضافة بنجاح');
     }
 }
