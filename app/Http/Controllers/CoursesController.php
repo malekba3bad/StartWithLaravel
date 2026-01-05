@@ -31,4 +31,30 @@ class CoursesController extends Controller
         Courses::create($data);
         return redirect()->route('courses.index')->with('success','تم الإضافة بنجاح');
     }
+
+    public function edit($id){
+        $data= Courses::find($id);
+        if(empty($data)){
+            return redirect()->route('courses.index')->with('error','الكورس غير موجود');
+        }
+        return view('courses.edit',compact('data'));
+    }
+
+    public function update(CreateCourseValidationRequest $request,$id){
+        $data= Courses::find($id);
+        if(empty($data)){
+            return redirect()->route('courses.index')->with('error','الكورس غير موجود');
+        }
+        $data->update($request->all());
+        return redirect()->route('courses.index')->with('success','تم التحديث بنجاح');
+    }
+
+    public function destroy($id){
+        $data= Courses::find($id);
+        if(empty($data)){
+            return redirect()->route('courses.index')->with('error','الكورس غير موجود');
+        }
+        $data->delete();
+        return redirect()->route('courses.index')->with('success','تم الحذف بنجاح');
+    }
 }

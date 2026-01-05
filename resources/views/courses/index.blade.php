@@ -16,6 +16,13 @@
     </div>
   
 @endif
+
+@if (Session::has('error'))
+    <div class="alert alert-danger" style="color: red; font-size: 16px; font-weight: bold; text-align: center; margin-top: 10px">
+        {{ Session::get('error') }}
+    </div>
+  
+@endif
     
               </div>
               <!-- /.card-header -->
