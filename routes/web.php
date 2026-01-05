@@ -8,6 +8,7 @@ use App\Http\Controllers\FlightsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\StudentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -44,6 +45,13 @@ Route::get('edit_courses/{id}', [CoursesController::class, 'edit'])->name('cours
 Route::post('update_courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
 Route::get('delete_courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 
+//Setup Students Routes
+Route::get('student', [StudentController::class, 'index'])->name('student.index');
+Route::get('create_student', [StudentController::class, 'create'])->name('student.create');
+Route::post('store_student', [StudentController::class, 'store'])->name('student.store');
+Route::get('edit_student/{id}', [StudentController::class, 'edit'])->name('student.edit');
+Route::post('update_student/{id}', [StudentController::class, 'update'])->name('student.update');
+Route::get('delete_student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 
 
