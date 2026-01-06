@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCourseValidationRequest;
+use App\Models\countries;
 use App\Models\Courses;
 class CoursesController extends Controller
 {
