@@ -31,7 +31,7 @@
                  
                     
                 
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-bordered table-hover table-sm ">
                   <thead>
                     <tr>
                       
@@ -55,7 +55,7 @@
                       <td>{{ $info->name }}</td>
                       <td>{{ $info->country_name }}</td>
                       <td>{{ $info->address }}</td>
-                      <td>{{ $info->phones }}</td>
+                      <td>{{ $info->phone }}</td>
                       <td>
                         @if ($info->image != null)
                         <img style="width: 80px; height: 80px" src="{{ asset('uploads/' . $info->image) }}" alt="صورة الطالب">
