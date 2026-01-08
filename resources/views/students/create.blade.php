@@ -64,8 +64,8 @@
                 </div>
                   
                   <div class="form-group">
-                    <label for="image">الصورة</label>
-                    <input type="file" name="image" class="form-control" id="image" >
+                    <label for="photo">الصورة</label>
+                    <input type="file" name="photo" class="form-control" id="photo" >
                   </div>
                   <div class="form-group">
                     <label for="notes">ملاحظات</label>

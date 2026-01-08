@@ -40,7 +40,15 @@ $student = new Students();
         $student->phone = $request->phone;
         $student->email = $request->email;
         $student->nationalID = $request->nationalID;
-        $student->image = $request->image;
+        //upload photo
+        if ($request->has('photo')) {
+            $image = $request->photo;
+            $extension = strtolower($image->extension());
+            $fileName = time() . rand(1, 1000) . '.' . $extension;
+            $image->move("uploads", $fileName);
+            $student->image = $fileName;
+        }
+
         $student->address = $request->address;
         $student->notes = $request->notes;
         $student->active = $request->active;
