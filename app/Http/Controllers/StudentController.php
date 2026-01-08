@@ -56,4 +56,49 @@ $student = new Students();
        
         return redirect()->route('student.index')->with('success','تم الإضافة بنجاح');
     }
+
+     public function edit($id){
+        $data= Students::find($id);
+        if(empty($data)){
+            return redirect()->route('student.index')->with('error','الطالب غير موجود');
+        }
+        $countries = countries::select('id', 'name')->where('active', 1)->get();
+
+        return view('students.edit',['data'=>$data,'countries'=>$countries]);
+    }
+
+     public function update(CreateStudentRequest $request,$id){
+        $dataStudent= Students::find($id);
+        if(empty($dataStudent)){
+            return redirect()->route('student.index')->with('error','الطالب غير موجود');
+        }
+        $dataStudent->name = $request->name;
+        $dataStudent->country_id = $request->country_id;
+        $dataStudent->phone = $request->phone;
+        $dataStudent->email = $request->email;
+        $dataStudent->nationalID = $request->nationalID;
+        //upload photo
+        if ($request->hasFile('photo')) {
+            $image = $request->photo;
+            $extension = strtolower($image->extension());
+            $fileName = time() . rand(1, 1000) . '.' . $extension;
+            $image->move("uploads", $fileName);
+            $dataStudent->image = $fileName;
+        }
+
+        $dataStudent->address = $request->address;
+        $dataStudent->notes = $request->notes;
+        $dataStudent->active = $request->active;
+        $dataStudent->save();
+        return redirect()->route('student.index')->with('success','تم التحديث بنجاح');
+    }
+
+     public function destroy($id){
+        $data= Students::find($id);
+        if(empty($data)){
+            return redirect()->route('student.index')->with('error','الطالب غير موجود');
+        }
+        $data->delete();
+        return redirect()->route('student.index')->with('success','تم الحذف بنجاح');
+    }
 }
