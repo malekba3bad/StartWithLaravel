@@ -49,15 +49,15 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="البريد الالكتروني" value="{{ old('email') }}">
                     @error('email')
                     <div style="color: red" class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
                 <div class="form-group">
                     <label for="nationalID">الرقم القومي</label>
-                    <input type="email" name="nationalID" class="form-control" id="nationalID" placeholder="الرقم القومي" value="{{ old('nationalID') }}">
+                    <input type="text" name="nationalID" class="form-control" id="nationalID" placeholder="الرقم القومي" value="{{ old('nationalID') }}">
                     @error('nationalID')
                     <div style="color: red" class="alert alert-danger">{{ $message }}</div>
                     @enderror
