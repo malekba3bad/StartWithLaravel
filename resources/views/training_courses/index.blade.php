@@ -58,8 +58,11 @@
                       <td>{{ $info->created_at }}</td>
                       <td>{{ $info->updated_at }}</td>
                       <td>
+                    
                     <a href="{{ route('training_courses.edit', $info->id) }}" class="btn btn-primary">تعديل</a>
                     <a href="{{ route('training_courses.destroy', $info->id) }}" class="btn btn-danger">حذف</a>
+                    <br>
+                    <a href="{{ route('training_courses.details', $info->id) }}" class="btn btn-info" style="margin-top: 6px">الطلاب</a>
 
                 
                 </td>

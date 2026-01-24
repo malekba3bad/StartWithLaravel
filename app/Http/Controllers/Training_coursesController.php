@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\training_courses;
 use App\Http\Requests\CreateTraingCourse;
 use App\Models\Training_courses as ModelsTraining_courses;
+use App\Models\training_courses_enrolments;
 
 class Training_coursesController extends Controller
 {
@@ -71,6 +72,16 @@ $student = new Training_courses();
         }
         $dataTraining->delete();
         return redirect()->route('training_courses.index')->with('success','تم الحذف بنجاح');
+    }
+
+    public function details($id){
+        $dataTraining= Training_courses::find($id);
+        if(empty($dataTraining)){
+            return redirect()->route('training_courses.index')->with('error','الطالب غير موجود');
+        }
+        $dataTraining->course_name=Courses::where('id','=',$dataTraining->courseID)->value('name');
+        $dataTraining->StudentCounter=training_courses_enrolments::where('training_courses_id','=',$id)->count();
+        return view('training_courses.details',['data'=>$dataTraining]);
     }
 
 

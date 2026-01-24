@@ -61,6 +61,7 @@ Route::post('store_training_courses', [Training_coursesController::class, 'store
 Route::get('edit_training_courses/{id}', [Training_coursesController::class, 'edit'])->name('training_courses.edit');
 Route::post('update_training_courses/{id}', [Training_coursesController::class, 'update'])->name('training_courses.update');
 Route::get('delete_training_courses/{id}', [Training_coursesController::class, 'destroy'])->name('training_courses.destroy');
+Route::get('details_training_courses/{id}', [Training_coursesController::class, 'details'])->name('training_courses.details');
 
 Route::resource('country', CountriesController::class);
 
